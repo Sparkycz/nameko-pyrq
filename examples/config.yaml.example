@@ -1,0 +1,8 @@
+PY-RQ:
+  queue_name: 'test-queue'
+  host: localhost
+  port: 6379
+  db: 0
+  password: ''
+  batch_size: 10 # optional / default 10 / count of items got from Redis queue at once
+  waiting_sleep: 1 # optional / default 0 / value in seconds, optional, if incoming queue is empty then wait 1 second
