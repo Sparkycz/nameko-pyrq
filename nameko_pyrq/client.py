@@ -30,3 +30,9 @@ class PyRqClient(DependencyProvider):
     def dispatch(self, method: str, **params):
         request = {"method": method, "params": params}
         self._queue.add_item(json.dumps(request))
+
+    def is_empty(self):
+        if not self._queue.get_count():
+            return True
+        else:
+            return False

@@ -37,6 +37,11 @@ class TestPyrqClient(unittest.TestCase):
         self.assertEquals(expected, json.loads(actual))
         self._queue.ack_item(actual)
 
+    def test_is_empty(self):
+        self.assertTrue(self._pyrq_client.is_empty())
+        self._pyrq_client.dispatch('whatever')
+        self.assertFalse(self._pyrq_client.is_empty())
+
 
 if __name__ == '__main__':
     unittest.main()
