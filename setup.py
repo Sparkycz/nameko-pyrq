@@ -13,6 +13,7 @@ setup(
         "redis",
         "py-rq==1.0.0"
     ],
+    packages=['nameko_pyrq'],
     dependency_links=[
         "git+ssh://git@github.com/heureka/py-rq.git@0.2.1#egg=py-rq-1.0.0"
     ],
