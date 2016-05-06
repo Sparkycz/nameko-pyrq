@@ -10,7 +10,7 @@ setup(
     py_modules=['nameko_pyrq'],
     install_requires=[
         "nameko>=2.0.0",
-        "redis"
+        "redis",
         "py-rq==1.0.0"
     ],
     dependency_links=[
