@@ -1,16 +1,13 @@
 import json
 import logging
-
-from functools import partial
 from time import sleep
+from datetime import datetime
+from functools import partial
 
 from nameko.extensions import Entrypoint, ProviderCollector, SharedExtension
 from nameko.exceptions import MalformedRequest, MethodNotFound
 from pyrq.queues import Queue
 from redis import Redis
-
-logging.basicConfig(format='%(asctime) %(message)s')
-_log = logging.getLogger(__name__)
 
 CONFIG_KEY = 'PY-RQ'
 
@@ -69,7 +66,8 @@ class RedisRpc(ProviderCollector, SharedExtension):
             MalformedRequest("Definition of method is missing. Got {}".format(data))
 
         try:
-            _log.info("working on command: `{}`".format(method))
+            logging.info("nameko-pyrq - [{}] - working on command: `{}`, params: `{}`"
+                         .format(datetime.now(), method, data.get('params')))
             provider = self._provider_map[method]
         except KeyError:
             raise MethodNotFound(("unknown command `{}`".format(method)))
