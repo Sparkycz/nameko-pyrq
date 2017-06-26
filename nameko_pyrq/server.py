@@ -38,7 +38,7 @@ class RedisRpc(ProviderCollector, SharedExtension):
             self._provider_map[provider.command] = provider
 
         if not self._gt:
-            self._gt = self.container.spawn_managed_thread(self.run, protected=True)
+            self._gt = self.container.spawn_managed_thread(self.run)
 
     def stop(self):
         self._gt.kill()
